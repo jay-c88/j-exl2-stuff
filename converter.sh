@@ -86,3 +86,11 @@ fi
 echo "$(date) - Finishing time."
 duration=`date -d@$SECONDS -u +%H:%M:%S`
 echo "Time took: $duration"
+
+
+read -p "Upload to Huggingface? (y/N): " UPLOAD_HF
+
+if [[ "$UPLOAD_HF" == ""]]; then
+    huggingface-cli login --token $HUGGINGFACE_TOKEN --add-to-git-credential
+    huggingface-cli upload --private  "JayhC/${CONVERTED_FOLDER%%_JayhC}" "converted/${CONVERTED_FOLDER}
+fi
