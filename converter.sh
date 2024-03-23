@@ -58,8 +58,8 @@ if [ -d "$TEMP_DIR" ]; then
 fi
 mkdir $TEMP_DIR
 
-echo "Model path: $MODEL_FOLDER"
 echo "Model name: $MODEL_NAME"
+echo "Model path: $MODEL_FOLDER"
 echo "Measurement: $MEASUREMENT_FILE"
 echo "Converted folder: $CONVERTED_FOLDER"
 echo "Calibration dataset: $CAL_FILE"
@@ -90,7 +90,7 @@ echo "Time took: $duration"
 
 read -p "Upload to Huggingface? (y/N): " UPLOAD_HF
 
-if [[ "$UPLOAD_HF" == ""]]; then
+if [[ "$UPLOAD_HF" == "y"]]; then
     if [[ $HUGGINGFACE_TOKEN ]]; then
         huggingface-cli login --token $HUGGINGFACE_TOKEN --add-to-git-credential
     else

@@ -11,7 +11,7 @@ fi
 TEMP_DIR="temp"
 
 # Input Calibration File (blank -> use exllamav2's default calibration dataset)
-read -e -p "Enter path to calibration dataset file (blank=default calibration): " CAL_FILE
+read -e -p "Enter path to calibration dataset file (blank=default dataset): " CAL_FILE
 CAL_FILE=${CAL_FILE:-""}
 
 # Input model suffix (e.g. to emphasize calibration data name)
@@ -21,12 +21,12 @@ MODEL_SUFFIX=${MODEL_SUFFIX:-""}
 # Input params
 read -p "Enter --quantization-- calibration length (default=2048): " CAL_LENGTH
 CAL_LENGTH=${CAL_LENGTH:-2048}
-read -p "Enter --quantization-- calibration rows/batch (default=16): " CAL_ROWS
+read -p "Enter --quantization-- calibration rows/batch (default=100): " CAL_ROWS
 CAL_ROWS=${CAL_ROWS:-100}
 read -p "Enter --measurement-- calibration length (default=2048): " MCAL_LENGTH
 MCAL_LENGTH=${MCAL_LENGTH:-2048}
 read -p "Enter --measurement-- calibration rows/batch (default=16): " MCAL_ROWS
-MCAL_ROWS=${MCAL_ROWS:-100}
+MCAL_ROWS=${MCAL_ROWS:-16}
 
 # Add suffix
 if [[ "$MODEL_SUFFIX" == "" ]]; then
@@ -50,8 +50,8 @@ if [ -d "$TEMP_DIR" ]; then
 fi
 mkdir $TEMP_DIR
 
-echo "Model path: $MODEL_FOLDER"
 echo "Model name: $MODEL_NAME"
+echo "Model path: $MODEL_FOLDER"
 echo "Measurement output file: $MEASUREMENT_FILE"
 echo "Calibration dataset file used: $CAL_FILE"
 echo "Calibration(quantization) length: $CAL_LENGTH"
