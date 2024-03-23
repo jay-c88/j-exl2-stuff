@@ -71,7 +71,7 @@ else
         exit 1
     fi
     echo "Quantizing with custom calibration $CAL_FILE..."
-    python exllamav2/convert.py -i "$MODEL_FOLDER" -o "$TEMP_DIR" -nr -m "$MEASUREMENT_FILE" -ml "$MCAL_LENGTH" -mr "$MCAL_ROWS" -c "$CAL_FILE" -l "$CAL_LENGTH" -r "$CAL_ROWS"
+    python exllamav2/convert.py -i "$MODEL_FOLDER" -o "$TEMP_DIR" -nr -om "$MEASUREMENT_FILE" -ml "$MCAL_LENGTH" -mr "$MCAL_ROWS" -c "$CAL_FILE" -l "$CAL_LENGTH" -r "$CAL_ROWS"
 fi
 
 echo "$(date) - Finishing time."
