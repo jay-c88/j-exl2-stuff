@@ -20,7 +20,7 @@ if [ ! -e "$MEASUREMENT_FILE" ]; then
 fi
 
 # Input Calibration File (blank -> use exllamav2's default calibration dataset)
-read -e -p "Enter path to calibration dataset file (blank=default calibration): " CAL_FILE
+read -e -p "Enter path to calibration dataset file (blank=default dataset): " CAL_FILE
 CAL_FILE=${CAL_FILE:-""}
 
 # Input model suffix (e.g. to emphasize calibration data name)
@@ -96,5 +96,6 @@ if [[ "$UPLOAD_HF" == "y"]]; then
     else
         huggingface-cli login --add-to-git-credential
     fi
-    huggingface-cli upload --private "JayhC/${CONVERTED_FOLDER%%_JayhC}" "${CONVERTED_FOLDER}"
+    foo="JayhC/${CONVERTED_FOLDER##converted/}"
+    huggingface-cli upload --private "${foo%%"_JayhC"}" "${CONVERTED_FOLDER}"
 fi
