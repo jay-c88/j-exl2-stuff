@@ -96,5 +96,5 @@ if [[ "$UPLOAD_HF" == "y"]]; then
     else
         huggingface-cli login --add-to-git-credential
     fi
-    huggingface-cli upload --private "JayhC/${CONVERTED_FOLDER%%_JayhC}" "converted/${CONVERTED_FOLDER}
+    huggingface-cli upload --private "JayhC/${CONVERTED_FOLDER%%_JayhC}" "${CONVERTED_FOLDER}"
 fi
