@@ -45,10 +45,6 @@ if [ ! -d "measurements" ]; then
     mkdir measurements
 fi
 
-if [ ! -d "converted" ]; then
-    mkdir converted
-fi
-
 if [ -d "$TEMP_DIR" ]; then
     rmdir -r $TEMP_DIR
 fi

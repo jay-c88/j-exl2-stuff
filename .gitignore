@@ -2,6 +2,6 @@
 .docker*
 exllamav2/
 models/*
-!models/.hf_dl.py
-converted/*
-temp/*
+!models/hf_dl.py
+converted/
+temp/
