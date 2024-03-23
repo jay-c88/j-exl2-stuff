@@ -63,14 +63,14 @@ echo "$(date) - Starting time."
 
 if [[ "$CAL_FILE" == "" ]]; then
 	echo No calibration dataset chosen. Quantizing with standard calibration...
-	python exllamav2/convert.py -i "$MODEL_DIR" -o "$TEMP_DIR" -nr -om "$MEASUREMENT_FILE" -ml "$MCAL_LENGTH" -mr "$MCAL_ROWS" -l "$CAL_LENGTH" -r "$CAL_ROWS"
+	python exllamav2/convert.py -i "$MODEL_FOLDER" -o "$TEMP_DIR" -nr -om "$MEASUREMENT_FILE" -ml "$MCAL_LENGTH" -mr "$MCAL_ROWS" -l "$CAL_LENGTH" -r "$CAL_ROWS"
 else
     if [ ! -e "$CAL_FILE" ]; then
         echo "Calibration dataset doesn't exist. Cancelling..."
         exit 1
     fi
     echo "Quantizing with custom calibration $CAL_FILE..."
-    python exllamav2/convert.py -i "$MODEL_DIR" -o "$TEMP_DIR" -nr -m "$MEASUREMENT_FILE" -ml "$MCAL_LENGTH" -mr "$MCAL_ROWS" -c "$CAL_FILE" -l "$CAL_LENGTH" -r "$CAL_ROWS"
+    python exllamav2/convert.py -i "$MODEL_FOLDER" -o "$TEMP_DIR" -nr -m "$MEASUREMENT_FILE" -ml "$MCAL_LENGTH" -mr "$MCAL_ROWS" -c "$CAL_FILE" -l "$CAL_LENGTH" -r "$CAL_ROWS"
 fi
 
 echo "$(date) - Finishing time."
