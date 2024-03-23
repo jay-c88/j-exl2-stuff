@@ -69,6 +69,7 @@ echo "bpw: $BPW"
 echo "Head bits: $HB"
 
 echo "$(date) - Starting time."
+SECONDS=0
 
 if [[ "$CAL_FILE" == "" ]]; then
 	echo No calibration dataset chosen. Quantizing with standard calibration...
@@ -83,3 +84,5 @@ else
 fi
 
 echo "$(date) - Finishing time."
+duration=`date -d@$SECONDS -u +%H:%M:%S`
+echo "Time took: $duration"

@@ -60,6 +60,7 @@ echo "Calibration(measurement) length: $MCAL_LENGTH"
 echo "Calibration(measurement) rows/batch: $MCAL_ROWS"
 
 echo "$(date) - Starting time."
+SECONDS=0
 
 if [[ "$CAL_FILE" == "" ]]; then
 	echo No calibration dataset chosen. Quantizing with standard calibration...
@@ -74,3 +75,5 @@ else
 fi
 
 echo "$(date) - Finishing time."
+duration=`date -d@$SECONDS -u +%H:%M:%S`
+echo "Time took: $duration"
