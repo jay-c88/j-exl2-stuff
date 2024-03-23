@@ -91,6 +91,10 @@ echo "Time took: $duration"
 read -p "Upload to Huggingface? (y/N): " UPLOAD_HF
 
 if [[ "$UPLOAD_HF" == ""]]; then
-    huggingface-cli login --token $HUGGINGFACE_TOKEN --add-to-git-credential
+    if [[ $HUGGINGFACE_TOKEN ]]; then
+        huggingface-cli login --token $HUGGINGFACE_TOKEN --add-to-git-credential
+    else
+        huggingface-cli login --add-to-git-credential
+    fi
     huggingface-cli upload --private  "JayhC/${CONVERTED_FOLDER%%_JayhC}" "converted/${CONVERTED_FOLDER}
 fi
