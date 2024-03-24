@@ -32,8 +32,8 @@ read -p "Enter calibration length (default=2048): " CAL_LENGTH
 CAL_LENGTH=${CAL_LENGTH:-2048}
 read -p "Enter calibration rows/batch (default=100): " CAL_ROWS
 CAL_ROWS=${CAL_ROWS:-100}
-read -p "Enter bpw bits: (default=8): " BPW
-BPW=${BPW:-8}
+read -p "Enter bpw bits: (default=6): " BPW
+BPW=${BPW:-6}
 read -p "Enter head bits (default=6): " HB
 HB=${HB:-6}
 
