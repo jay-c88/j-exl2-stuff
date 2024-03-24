@@ -14,7 +14,10 @@ def parseargs():
 if __name__ == "__main__":
     args = parseargs()
     
-    upload_command = ['huggingface-cli', 'upload']
+    upload_command = ['huggingface-cli', 'upload', '--private']
+    
+    if args.token is not None:
+        upload_command.extend(['--token', args.token])
     
     repo = args.repo
     while repo is None or repo.strip() == "":
@@ -29,11 +32,6 @@ if __name__ == "__main__":
     
     if args.path_repo is not None:
         upload_command.append(args.path_repo)
-    
-    upload_command.append('--private') # if repo doesn't exist, create a private repo instead of public
-    
-    if args.token is not None:
-        upload_command.extend(['--token', args.token])
     
     print(' '.join(upload_command))
     subprocess.run(upload_command, shell=True)
