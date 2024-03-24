@@ -24,7 +24,7 @@ if __name__ == "__main__":
 
         f_input = args.i
         while f_input is None:
-            f_input = input("No or invalid file/folder specified. (Leave empty to upload current folder): ")
+            f_input = input("Enter a file/folder to upload. (Leave empty to upload current folder): ")
         if f_input != "":
             upload_command.append(f_input)
         
