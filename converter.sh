@@ -90,7 +90,7 @@ echo "Time took: $duration"
 
 read -p "Upload to Huggingface? (y/N): " UPLOAD_HF
 
-if [[ "$UPLOAD_HF" == "y"]]; then
+if [[ "$UPLOAD_HF" == "y" ]]; then
     if [[ $HUGGINGFACE_TOKEN ]]; then
         huggingface-cli login --token $HUGGINGFACE_TOKEN --add-to-git-credential
     else
