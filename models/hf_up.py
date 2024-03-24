@@ -12,35 +12,32 @@ def parseargs():
     return parser.parse_args()
 
 if __name__ == "__main__":
-    try:
-        args = parseargs()
-        
-        upload_command = ['huggingface-cli', 'upload']
-        
-        repo = args.repo
-        while repo is None or repo.strip() == "":
-            repo = input("Please specify a repo: ")
-        upload_command.append(repo)
+    args = parseargs()
+    
+    upload_command = ['huggingface-cli', 'upload']
+    
+    repo = args.repo
+    while repo is None or repo.strip() == "":
+        repo = input("Please specify a repo: ")
+    upload_command.append(repo)
 
-        f_input = args.i
-        while f_input is None:
-            f_input = input("Enter a file/folder to upload. (Leave empty to upload current folder): ")
-        if f_input != "":
-            upload_command.append(f_input)
-        
-        if args.path_repo is not None:
-            upload_command.append(args.path_repo)
-        
-        upload_command.append('--private') # if repo doesn't exist, create a private repo instead of public
-        
-        if args.token is not None:
-            upload_command.extend(['--token', args.token])
-        
-        subprocess.run(['echo'] + upload_command, shell=True)
-        subprocess.run(upload_command, shell=True)
-    except:
-        input("Something went wrong. Press Enter to exit...")
-        sys.exit()
+    f_input = args.i
+    while f_input is None:
+        f_input = input("Enter a file/folder to upload. (Leave empty to upload current folder): ")
+    if f_input != "":
+        upload_command.append(f_input)
+    
+    if args.path_repo is not None:
+        upload_command.append(args.path_repo)
+    
+    upload_command.append('--private') # if repo doesn't exist, create a private repo instead of public
+    
+    if args.token is not None:
+        upload_command.extend(['--token', args.token])
+    
+    print(upload_command)
+    subprocess.run(['echo'] + upload_command, shell=True)
+    subprocess.run(upload_command, shell=True)
     
     input("Done. Press Enter to exit.")
     sys.exit()
