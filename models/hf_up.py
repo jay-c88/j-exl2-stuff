@@ -34,6 +34,7 @@ if __name__ == "__main__":
         upload_command.append(args.path_repo)
     
     print(' '.join(upload_command))
+    print(upload_command)
     subprocess.run(upload_command, shell=True)
     
     input("Done. Press Enter to exit.")
