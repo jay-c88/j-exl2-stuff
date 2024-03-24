@@ -13,7 +13,7 @@ def parseargs():
 if __name__ == "__main__":
     args = parseargs()
     
-    upload_command = ['echo', 'huggingface-cli', 'upload']
+    upload_command = ['huggingface-cli', 'upload']
     
     repo = args.repo
     while repo is None or repo.strip() == "":
