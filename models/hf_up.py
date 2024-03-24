@@ -35,8 +35,7 @@ if __name__ == "__main__":
     if args.token is not None:
         upload_command.extend(['--token', args.token])
     
-    print(upload_command)
-    subprocess.run(['echo'] + upload_command, shell=True)
+    print(' '.join(upload_command))
     subprocess.run(upload_command, shell=True)
     
     input("Done. Press Enter to exit.")
