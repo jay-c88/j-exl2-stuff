@@ -6,3 +6,5 @@ models/*
 converted/
 temp/
 datasets/*/
+measurements/*
+!measurements/*.sh
